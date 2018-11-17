@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {Grid, Typography} from '@material-ui/core';
 
 import './Main.scss';
 
@@ -9,18 +10,23 @@ class Main extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, children } = this.props;
 
     return (
-      <div className={`Main ${classes.root}`}>
-        Main
-      </div>
+      <Grid
+        className={`Main ${classes.root}`}
+        container
+        alignItems="center"
+        justify="center"
+      >
+        {children}
+      </Grid>
     );
   }
 }
 
 Main.propTypes = {
-  classes: PropTypes.object,
+  classes: PropTypes.object
 };
 
 export default Main;
