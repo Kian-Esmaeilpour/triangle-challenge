@@ -1,0 +1,6 @@
+{
+  "viewDestination": "./src/components",
+  "storeDestination": "./src/components",
+  "componentDestination": "./src/components",
+  "templatePath": "./rg-templates"
+}
