@@ -1,0 +1,6 @@
+const errorTypes = {
+  INVALID_TRIANGLE_SIDES: 'INVALID_TRIANGLE_SIDES',
+  ZERO_OR_NEGATIVE_LENGTH: 'ZERO_OR_NEGATIVE_LENGTH'
+};
+
+export default errorTypes;
