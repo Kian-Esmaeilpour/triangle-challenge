@@ -7,7 +7,7 @@ import './SideLengthInput.scss';
 class SideLengthInput extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    value: PropTypes.number,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired
