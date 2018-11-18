@@ -13,10 +13,3 @@ export function setSideErrors(id, errors) {
     payload: { id, errors }
   };
 }
-
-export function setTriangleErrors(triangleErrors) {
-  return {
-    type: Actions.SET_TRIANGLE_ERRORS,
-    payload: { triangleErrors }
-  };
-}
