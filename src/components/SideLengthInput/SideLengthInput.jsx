@@ -19,7 +19,7 @@ class SideLengthInput extends Component {
   };
 
   render() {
-    const { classes, value, id, label, onChange } = this.props;
+    const { classes, value, id, label, errors, onChange } = this.props;
 
     return (
       <div className={`SideLengthInput ${classes.root}`}>
@@ -28,6 +28,8 @@ class SideLengthInput extends Component {
           label={label}
           value={value}
           onChange={onChange(id)}
+          error={errors.length > 0}
+          helperText={errors.join(', ')}
           type="number"
           className={classes.textField}
           InputLabelProps={{
