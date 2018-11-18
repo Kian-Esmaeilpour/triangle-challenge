@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl';
 import 'typeface-roboto';
 
 import './index.css';
@@ -10,7 +11,9 @@ import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <IntlProvider locale="en">
+      <App />
+    </IntlProvider>
   </Provider>,
   document.getElementById('root')
 );
