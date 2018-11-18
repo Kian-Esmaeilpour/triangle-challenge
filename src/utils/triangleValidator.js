@@ -1,6 +1,7 @@
 import errorTypes from '../constants/errorTypes';
 
 const isSideLengthLessOrEqualZero = side => side.value <= 0;
+const isSideLengthEmpty = side => side.value === '';
 
 // Sum of each two sides  should be greater than the third side
 export const isInvalidTriangleSides = sides => {
@@ -13,16 +14,26 @@ export const isInvalidTriangleSides = sides => {
 
 export const validateTriangle = sides => {
   const errors = [];
+
+  if (sides.some(isSideLengthEmpty)) {
+    errors.push(errorTypes.FORM_EMPTY_LENGTH);
+  }
   if (sides.some(isSideLengthLessOrEqualZero)) {
-    errors.push(errorTypes.ZERO_OR_NEGATIVE_LENGTH);
-  } else if (isInvalidTriangleSides) {
+    errors.push(errorTypes.FORM_ZERO_OR_NEGATIVE_LENGTH);
+  }
+  if (errors.length === 0 && isInvalidTriangleSides(sides)) {
     errors.push(errorTypes.INVALID_TRIANGLE_SIDES);
   }
-  //TODO: Check for provided sides length count
   return errors;
 };
 
 export const validateSide = side => {
-  console.log('isSideLengthLessOrEqualZero(side)', isSideLengthLessOrEqualZero(side));
-  return isSideLengthLessOrEqualZero(side) ? [errorTypes.ZERO_OR_NEGATIVE_LENGTH] : [];
+  const errors = [];
+
+  if (isSideLengthEmpty(side)) {
+    errors.push(errorTypes.INPUT_EMPTY_LENGTH);
+  } else if (isSideLengthLessOrEqualZero(side)) {
+    errors.push(errorTypes.INPUT_ZERO_OR_NEGATIVE_LENGTH);
+  }
+  return errors;
 };
