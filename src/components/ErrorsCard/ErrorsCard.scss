@@ -1,0 +1,10 @@
+@import "../../utils/styleHelper";
+
+.ErrorsCard {
+  margin-top: 1em;
+
+  .errors-card-paper {
+    background-color: $color-bgc-error;
+    border-bottom: 3px dotted lighten($color-red, 20%);
+  }
+}
