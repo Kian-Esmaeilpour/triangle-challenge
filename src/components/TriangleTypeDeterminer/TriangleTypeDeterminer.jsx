@@ -14,13 +14,14 @@ class TriangleTypeDeterminer extends Component {
     const {
       triangleSides,
       triangleErrors,
+      triangleType,
       onSideLengthChange
     } = this.props;
 
     return (
       <div className={`TriangleTypeDeterminer`}>
         <Form
-          title="Triangle Type Determiner"
+          title={`Triangle Type Determiner ${triangleType}`}
           onSubmit={onSideLengthChange}
         >
           {
@@ -49,7 +50,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSideLengthChange: id => event => dispatch(setSideLength(id, event.target.value))
+  onSideLengthChange: id => event => {
+    const value = event.target.value ? Number(event.target.value) : '';
+    return dispatch(setSideLength(id, value));
+  }
 });
 
 export default connect(
