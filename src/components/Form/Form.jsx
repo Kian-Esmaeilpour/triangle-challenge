@@ -34,15 +34,18 @@ class Form extends Component {
           <CardContent>
             {children}
           </CardContent>
-          <CardActions>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={onSubmit}
-            >
-              {submitButtonText}
-            </Button>
-          </CardActions>
+          {
+            onSubmit &&
+            <CardActions>
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={onSubmit}
+              >
+                {submitButtonText}
+              </Button>
+            </CardActions>
+          }
         </Card>
       </form>
     );
@@ -54,7 +57,7 @@ Form.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   submitButtonText: PropTypes.string,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func
 };
 
 export default Form;
