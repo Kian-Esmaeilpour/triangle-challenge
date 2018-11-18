@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { injectIntl } from 'react-intl';
 
 import './TriangleTypeDeterminer.scss';
 import Form from '../Form';
@@ -7,6 +8,7 @@ import SideLengthInput from '../SideLengthInput';
 import ErrorsCard from '../ErrorsCard';
 import { setSideLength } from '../../actions/triangleActions';
 import { getTriangleErrors, getTriangleType } from '../../selectors/triangleSelector';
+import Messages from './TriangleTypeDeterminer.i18n';
 
 class TriangleTypeDeterminer extends Component {
 
@@ -15,15 +17,20 @@ class TriangleTypeDeterminer extends Component {
       triangleSides,
       triangleErrors,
       triangleType,
-      onSideLengthChange
+      onSideLengthChange,
+      intl: { formatMessage }
     } = this.props;
+
+    const triangleErrorsWithMessage = triangleErrors.map(error => (
+      { id: error, message: formatMessage(Messages[error.toLowerCase()]) }
+    ));
+    const triangleTypeName = formatMessage(
+      Messages[triangleType ? triangleType.toLowerCase() : 'not_a_triangle']
+    );
 
     return (
       <div className={`TriangleTypeDeterminer`}>
-        <Form
-          title={`Triangle Type Determiner ${triangleType}`}
-          onSubmit={onSideLengthChange}
-        >
+        <Form title={`Triangle Type Determiner:  ${triangleTypeName}`}>
           {
             triangleSides.map(side => (
               <SideLengthInput
@@ -37,7 +44,7 @@ class TriangleTypeDeterminer extends Component {
             ))
           }
         </Form>
-        <ErrorsCard errors={triangleErrors} />
+        <ErrorsCard errors={triangleErrorsWithMessage} />
       </div>
     );
   }
@@ -59,4 +66,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TriangleTypeDeterminer);
+)(injectIntl(TriangleTypeDeterminer));

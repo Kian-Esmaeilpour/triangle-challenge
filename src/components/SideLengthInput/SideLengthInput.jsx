@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TextField } from '@material-ui/core';
+import { injectIntl } from 'react-intl';
 
 import './SideLengthInput.scss';
+import Messages from './SideLengthInput.i18n';
 
 class SideLengthInput extends Component {
   static propTypes = {
@@ -19,7 +21,17 @@ class SideLengthInput extends Component {
   };
 
   render() {
-    const { classes, value, id, label, errors, onChange } = this.props;
+    const {
+      classes,
+      value,
+      id,
+      label,
+      errors,
+      onChange,
+      intl: { formatMessage }
+    } = this.props;
+
+    const errorMessage = errors.map(error => formatMessage(Messages[error.toLowerCase()])).join(', ');
 
     return (
       <div className={`SideLengthInput ${classes.root}`}>
@@ -29,7 +41,7 @@ class SideLengthInput extends Component {
           value={value}
           onChange={onChange(id)}
           error={errors.length > 0}
-          helperText={errors.join(', ')}
+          helperText={errorMessage}
           type="number"
           className={classes.textField}
           InputLabelProps={{
@@ -44,4 +56,4 @@ class SideLengthInput extends Component {
   }
 }
 
-export default SideLengthInput;
+export default injectIntl(SideLengthInput);
