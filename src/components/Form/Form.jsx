@@ -26,7 +26,10 @@ class Form extends Component {
         noValidate
         autoComplete="off"
       >
-        <Card className={classes.card}>
+        <Card
+          className={classes.card}
+          square
+        >
           {title && <CardHeader title={title} />}
           <CardContent>
             {children}
