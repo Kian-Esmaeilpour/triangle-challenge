@@ -3,7 +3,7 @@ import errorTypes from '../constants/errorTypes';
 const isSideLengthLessOrEqualZero = side => side.value <= 0;
 const isSideLengthEmpty = side => side.value === '';
 
-// Sum of each two sides  should be greater than the third side
+// Sum of each two sides must be greater than the third side
 export const isInvalidTriangleSides = sides => {
   return (
     sides[0].value + sides[1].value <= sides[2].value ||
