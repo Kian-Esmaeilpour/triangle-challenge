@@ -1,3 +1,5 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({});
+import triangle from './triangleReducer';
+
+export default combineReducers({ triangle });
