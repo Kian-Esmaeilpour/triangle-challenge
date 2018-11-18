@@ -7,7 +7,8 @@ import './ErrorsCard.scss';
 
 class ErrorsCard extends Component {
   static defaultProps = {
-    classes: {}
+    classes: {},
+    errors: null
   };
 
   render() {
@@ -25,12 +26,12 @@ class ErrorsCard extends Component {
           <List>
             {
               errors.map(error => (
-                <ListItem key={error}>
+                <ListItem key={error.id}>
                   <ListItemIcon>
                     <ErrorIcon color="error" />
                   </ListItemIcon>
                   <ListItemText>
-                    <Typography color="error">{error}</Typography>
+                    <Typography color="error">{error.message}</Typography>
                   </ListItemText>
                 </ListItem>
               ))
@@ -43,7 +44,8 @@ class ErrorsCard extends Component {
 }
 
 ErrorsCard.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  errors: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default ErrorsCard;
