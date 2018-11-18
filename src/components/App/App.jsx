@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import './App.css';
 import Header from '../Header';
@@ -16,9 +16,7 @@ class App extends Component {
             item
             sm={4}
           >
-            <Paper>
-              <TriangleTypeDeterminer />
-            </Paper>
+            <TriangleTypeDeterminer />
           </Grid>
         </Main>
       </div>

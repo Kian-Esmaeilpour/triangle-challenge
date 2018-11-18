@@ -13,7 +13,6 @@ class Header extends Component {
 
     return (
       <div className={`Header ${classes.root}`}>
-        Header
       </div>
     );
   }

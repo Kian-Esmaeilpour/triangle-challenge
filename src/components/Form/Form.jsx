@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardHeader, CardActions, CardContent, Button, Typography } from '@material-ui/core';
+import { Card, CardHeader, CardActions, CardContent, Button } from '@material-ui/core';
 
 import './Form.scss';
 
@@ -34,7 +34,6 @@ class Form extends Component {
           <CardActions>
             <Button
               variant="outlined"
-              size="small"
               color="primary"
               onClick={onSubmit}
             >
