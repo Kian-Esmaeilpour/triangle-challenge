@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import './TriangleTypeDeterminer.scss';
 import Form from '../Form';
 import SideLengthInput from '../SideLengthInput';
+import ErrorsCard from '../ErrorsCard';
 import { setSideLength } from '../../actions/triangleActions';
+import { getTriangleErrors, getTriangleType } from '../../selectors/triangleSelector';
 
 class TriangleTypeDeterminer extends Component {
-  static defaultProps = {
-    classes: {}
-  };
 
   render() {
-    const { classes, triangleSides, onSideLengthChange } = this.props;
+    const {
+      triangleSides,
+      triangleErrors,
+      onSideLengthChange
+    } = this.props;
 
     return (
-      <div className={`TriangleTypeDeterminer ${classes.root}`}>
+      <div className={`TriangleTypeDeterminer`}>
         <Form
           title="Triangle Type Determiner"
           onSubmit={onSideLengthChange}
@@ -27,23 +29,23 @@ class TriangleTypeDeterminer extends Component {
                 key={side.id}
                 label={side.id}
                 id={side.id}
-                onChange={onSideLengthChange}
                 value={side.value}
+                errors={side.errors}
+                onChange={onSideLengthChange}
               />
             ))
           }
         </Form>
+        <ErrorsCard errors={triangleErrors} />
       </div>
     );
   }
 }
 
-TriangleTypeDeterminer.propTypes = {
-  classes: PropTypes.object
-};
-
 const mapStateToProps = state => ({
-  triangleSides: state.triangle.triangleSides
+  triangleSides: state.triangle.triangleSides,
+  triangleErrors: getTriangleErrors(state),
+  triangleType: getTriangleType(state)
 });
 
 const mapDispatchToProps = dispatch => ({
