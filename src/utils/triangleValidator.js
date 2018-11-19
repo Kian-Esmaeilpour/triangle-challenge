@@ -1,6 +1,6 @@
 import errorTypes from '../constants/errorTypes';
 
-const isSideLengthLessOrEqualZero = side => side.value <= 0;
+const isSideLengthLessOrEqualZero = side => typeof side.value === 'number' ? side.value <= 0 : false;
 const isSideLengthEmpty = side => side.value === '';
 
 // Sum of each two sides must be greater than the third side
