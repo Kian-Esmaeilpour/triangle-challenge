@@ -14,7 +14,7 @@ class App extends Component {
         <Main>
           <Grid
             item
-            sm={10}
+            sm={4}
           >
             <TriangleTypeDeterminer />
           </Grid>
