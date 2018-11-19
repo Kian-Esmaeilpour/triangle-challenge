@@ -1,6 +1,6 @@
 import * as Actions from '../constants/actionTypes';
 
-const initialState = {
+export const initialState = {
   triangleSides: [
     { id: 'sideA', value: '', errors: [], dirty: false },
     { id: 'sideB', value: '', errors: [], dirty: false },

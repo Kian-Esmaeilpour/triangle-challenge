@@ -50,7 +50,7 @@ class TriangleTypeDeterminer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   triangleSides: state.triangle.triangleSides,
   triangleErrors: getTriangleErrors(state),
   triangleType: getTriangleType(state)
