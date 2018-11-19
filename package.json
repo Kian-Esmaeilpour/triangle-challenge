@@ -34,6 +34,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "react-test-renderer": "^16.6.3",
     "vue-generator": "^1.1.0"
   }
 }
